@@ -1,0 +1,31 @@
+# Datei wordpress/docker-compose.yml
+version: '3'
+
+services:
+   db:
+     image: mariadb:latest
+     volumes:
+       - vol-db:/var/lib/mysql
+     environment:
+       MYSQL_RANDOM_ROOT_PASSWORD: 1
+       MYSQL_DATABASE: wp
+       MYSQL_USER: ubuntu
+       MYSQL_PASSWORD: sml12345
+     restart: always
+
+   wordpress:
+     image: wordpress:latest
+     volumes:
+       - vol-www:/var/www/html/wp-content
+     ports:
+       - "8080:80"
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: ubuntu
+       WORDPRESS_DB_NAME: wp
+       WORDPRESS_DB_PASSWORD: sml12345
+     restart: always
+
+volumes:
+  vol-www:
+  vol-db:
