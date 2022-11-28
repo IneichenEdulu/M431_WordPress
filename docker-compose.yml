@@ -1,4 +1,4 @@
-# Datei wordpress/docker-compose.yml
+# M431 (INM) Webprojekt-Wordpress/docker-compose.yml
 version: '3'
 
 services:
